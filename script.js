@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Menu Mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    
+    if (menuToggle && menu) {
+        menuToggle.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
     // Configurar data mínima como hoje
     const dataEntrega = document.getElementById('data-entrega');
     if (dataEntrega) {
