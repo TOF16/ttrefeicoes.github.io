@@ -16,6 +16,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartTotalValue = document.getElementById('cart-total-value');
     const btnCart = document.querySelector('.btn-cart');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
+    const modal = document.getElementById('modal');
+
+    // Event listeners para fechar modais
+    document.querySelectorAll('.modal .close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // Event listener para fechar modais clicando fora
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    });
 
     // Função para atualizar o contador do carrinho
     function updateCartCount() {
@@ -89,11 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cartModal.style.display = 'block';
     });
 
-    // Event listener para fechar modal do carrinho
-    cartModal.querySelector('.close').addEventListener('click', function() {
-        cartModal.style.display = 'none';
-    });
-
     // Event listener para adicionar ao carrinho
     document.querySelectorAll('.btn-pedido').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -141,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cartModal.style.display = 'none';
 
         // Mostrar modal de pedido
-        const modal = document.getElementById('modal');
         modal.style.display = 'block';
     });
 
@@ -230,16 +242,6 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
             }
         });
     }
-
-    // Fechar modal clicando fora
-    window.addEventListener('click', function(event) {
-        if (event.target === cartModal) {
-            cartModal.style.display = 'none';
-        }
-        if (event.target === document.getElementById('modal')) {
-            document.getElementById('modal').style.display = 'none';
-        }
-    });
 
     // Máscara do CPF
     const cpfInput = document.getElementById('cpf');
