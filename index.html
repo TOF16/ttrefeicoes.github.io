@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.T Refeições - Bolos e Buffet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>T.T Refeições</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#buffet">Monte seu Buffet</a></li>
+                <li><a href="#combos">Combos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5592982377533" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+        <span>Fale Conosco</span>
+    </a>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Bolos Artesanais e Buffet</h2>
+                <p>Sabor e qualidade para tornar seu momento ainda mais especial</p>
+            </div>
+        </section>
+
+        <section id="produtos" class="produtos">
+            <h2>Nossos Produtos</h2>
+            
+            <div class="categoria-produtos">
+                <h3>Bolos Deliciosos</h3>
+                <p class="descricao-categoria">Todos os bolos: R$ 25,00</p>
+                <div class="produtos-grid">
+                    <div class="card">
+                        <img src="https://www.receitadevovo.com.br/_next/image?url=https%3A%2F%2Fd2qcpt1idvpipw.cloudfront.net%2Frecipes%2F2023%2F04%2Fbolo%20de%20chocolate%20bem%20fofissimo.jpg&w=1080&q=75" alt="Bolo de Chocolate">
+                        <h4>Bolo de Chocolate</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Chocolate" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://s2-receitas.glbimg.com/6mgfg9knaMXD0K8CS031ysp7Bcw=/0x0:2592x1728/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2014/09/10/15_51_53_142_IMG_2017.JPG" alt="Bolo de Queijo">
+                        <h4>Bolo de Queijo</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Queijo" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://cozinhalegal.com.br/wp-content/uploads/2024/09/Receita-Bolo-Limao-Simples-480x270.jpeg.webp" alt="Bolo de Limão">
+                        <h4>Bolo de Limão</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Limão" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://assets.unileversolutions.com/recipes-v3/67405-default.jpg?im=AspectCrop=(625,469);Resize=(625,469)" alt="Bolo de Cenoura">
+                        <h4>Bolo de Cenoura</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Cenoura" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://anamariabrogui.com.br/assets/uploads/receitas/fotos/f378c4836ffb369c2f591dad87f969cf9b39d881.png" alt="Bolo de Trigo">
+                        <h4>Bolo de Trigo</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Trigo" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://receitadaboa.com.br/wp-content/uploads/2024/03/bolo-de-milho-4-840x480-1.jpeg" alt="Bolo de Milho">
+                        <h4>Bolo de Milho</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Milho" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="http://receitatodahora.com.br/wp-content/uploads/2022/11/bolo-de-tapioca-granulada-receita-toda-hora-1024x688.jpg.webp" alt="Bolo de Tapioca">
+                        <h4>Bolo de Tapioca</h4>
+                        <p class="preco">R$ 25,00</p>
+                        <button class="btn-pedido" data-produto="Bolo de Tapioca" data-valor="25.00">Fazer Pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="combos" class="categoria-produtos">
+                <h3>Empadões Especiais</h3>
+                <div class="produtos-grid">
+                    <div class="card">
+                        <img src="https://www.receiteria.com.br/wp-content/uploads/empadao-de-frango-rapido.jpg" alt="Empadão de Frango">
+                        <h4>Empadão de Frango</h4>
+                        <p class="preco">R$ 70,00</p>
+                        <button class="btn-pedido" data-produto="Empadão de Frango" data-valor="70.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://receitashumquedelicia.com.br/wp-content/uploads/2019/08/empadao1-300x227.png" alt="Empadão de Frango com Catupiry">
+                        <h4>Empadão de Frango com Catupiry</h4>
+                        <p class="preco">R$ 80,00</p>
+                        <button class="btn-pedido" data-produto="Empadão de Frango com Catupiry" data-valor="80.00">Fazer Pedido</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://receitanatureba.com/wp-content/uploads/2020/10/Empadao-Fit.jpg.webp" alt="Empadão de Queijo e Presunto">
+                        <h4>Empadão de Queijo e Presunto</h4>
+                        <p class="preco">R$ 70,00</p>
+                        <button class="btn-pedido" data-produto="Empadão de Queijo e Presunto" data-valor="70.00">Fazer Pedido</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="categoria-produtos">
+                <h3>Sobremesas Especiais</h3>
+                <div class="produtos-grid">
+                    <div class="card">
+                        <img src="https://www.tendaatacado.com.br/dicas/wp-content/webp-express/webp-images/uploads/2022/04/pudim-de-leite-condensado-topo.jpg.webp" alt="Pudim">
+                        <h4>Pudim de Leite Condensado</h4>
+                        <p class="preco">R$ 60,00</p>
+                        <button class="btn-pedido" data-produto="Pudim de Leite Condensado" data-valor="60.00">Fazer Pedido</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="buffet" class="buffet">
+            <h2>Monte seu Buffet</h2>
+            <div class="buffet-options">
+                <form id="buffet-form">
+                    <h3>Escolha os Itens:</h3>
+                    <div class="options-grid">
+                        <div class="option">
+                            <input type="checkbox" id="salgados" name="buffet-items">
+                            <label for="salgados">Salgados</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="doces" name="buffet-items">
+                            <label for="doces">Doces</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="bebidas" name="buffet-items">
+                            <label for="bebidas">Bebidas</label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="bolo" name="buffet-items">
+                            <label for="bolo">Bolo Personalizado</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-solicitar">Solicitar Orçamento</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="contato" class="contato">
+            <h2>Entre em Contato</h2>
+            <div class="contato-container">
+                <div class="contato-info">
+                    <h3>Informações de Contato</h3>
+                    <p><i class="fas fa-phone"></i> +55 92 991449805</p>
+                    <p><i class="fas fa-envelope"></i> contato@ttrefeicoes.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Treze de Maio, N° 598, Manaus - AM</p>
+                </div>
+                <form id="contato-form">
+                    <input type="text" id="contato-nome" placeholder="Nome" required>
+                    <input type="email" id="contato-email" placeholder="E-mail" required>
+                    <input type="tel" id="contato-telefone" placeholder="Telefone" required>
+                    <textarea id="contato-mensagem" placeholder="Mensagem" required></textarea>
+                    <button type="submit">Enviar Mensagem via WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>T.T Refeições</h2>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#buffet">Monte seu Buffet</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Redes Sociais</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5592982377533" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 T.T Refeições. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fazer Pedido</h2>
+            <form id="pedido-form">
+                <div class="form-group">
+                    <label for="tipo-entrega">Tipo de Entrega:</label>
+                    <select id="tipo-entrega" required>
+                        <option value="">Selecione...</option>
+                        <option value="entrega">Entrega</option>
+                        <option value="retirada">Retirada</option>
+                        <option value="encomenda">Encomenda</option>
+                    </select>
+                </div>
+                <div id="endereco-grupo" class="form-group" style="display: none;">
+                    <label for="endereco">Endereço de Entrega:</label>
+                    <input type="text" id="endereco" placeholder="Rua, número, bairro" required>
+                    <input type="text" id="complemento" placeholder="Complemento (opcional)">
+                    <input type="text" id="referencia" placeholder="Ponto de referência">
+                </div>
+                <div class="form-group">
+                    <label for="data-entrega">Data de Entrega:</label>
+                    <input type="date" id="data-entrega" required min="">
+                </div>
+                <div class="form-group">
+                    <label for="hora-entrega">Horário de Entrega:</label>
+                    <input type="time" id="hora-entrega" required min="08:00" max="20:00">
+                    <small class="time-info">Horário de entrega: 8h às 20h</small>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">Identificação:</label>
+                    <input type="text" id="cpf" placeholder="Digite seu CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Digite um CPF válido">
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="btn-google">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google">
+                        Entrar com Google
+                    </button>
+                    <button type="button" class="btn-facebook">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                        Entrar com Facebook
+                    </button>
+                </div>
+
+                <div class="form-group payment-section">
+                    <label class="section-title">Forma de Pagamento:</label>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="local" name="payment" value="local" checked>
+                            <label for="local">Pagar no local</label>
+                        </div>
+                        
+                        <div class="payment-methods" id="local-methods">
+                            <div class="payment-method">
+                                <input type="radio" id="credit" name="payment-method" value="credit">
+                                <label for="credit">Cartão de Crédito</label>
+                                <small>(Pagamento será realizado na máquina de cartão)</small>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <input type="radio" id="debit" name="payment-method" value="debit">
+                                <label for="debit">Cartão de Débito</label>
+                                <small>(Pagamento será realizado na máquina de cartão)</small>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <input type="radio" id="pix" name="payment-method" value="pix">
+                                <label for="pix">Pix</label>
+                            </div>
+                            
+                            <div class="payment-method">
+                                <input type="radio" id="cash" name="payment-method" value="cash">
+                                <label for="cash">Dinheiro</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="cpf-fiscal">
+                        <input type="checkbox" id="cpf-cupom" name="cpf-cupom">
+                        <label for="cpf-cupom">Quero meu CPF no Cupom Fiscal</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-confirmar">Finalizar pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
