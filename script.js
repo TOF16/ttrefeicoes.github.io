@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
     const btnLimparCarrinho = document.getElementById('btn-limpar-carrinho');
     const modal = document.getElementById('modal');
+    const pixRadio = document.getElementById('pix');
+    const pixInfo = document.getElementById('pix-info');
+    let qrcode = null;
 
     // Inicializar o estado do carrinho
     updateCartCount();
@@ -172,7 +175,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Mostrar modal de pedido
         modal.style.display = 'block';
+
+        // Atualizar valor do PIX se estiver selecionado
+        if (pixRadio && pixRadio.checked) {
+            atualizarValorPix();
+        }
     });
+
+    // Função para atualizar valor do PIX
+    function atualizarValorPix() {
+        const totalCarrinho = cart.reduce((total, item) => total + (item.valor * item.quantity), 0);
+        const valorFormatado = totalCarrinho.toFixed(2).replace('.', ',');
+        document.getElementById('pix-valor').textContent = `R$ ${valorFormatado}`;
+    }
 
     // Event listener para fechar modais
     document.querySelectorAll('.modal .close').forEach(closeBtn => {
@@ -347,21 +362,13 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
     }
 
     // Gerenciar opção de pagamento PIX
-    const pixRadio = document.getElementById('pix');
-    const pixInfo = document.getElementById('pix-info');
-    let qrcode = null;
-
     if (pixRadio) {
         // Mostrar/ocultar informações do PIX
         document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 if (this.id === 'pix') {
-                    // Calcular valor total do carrinho
-                    const totalCarrinho = cart.reduce((total, item) => total + (item.valor * item.quantity), 0);
-                    
-                    // Atualizar o valor exibido
-                    const valorFormatado = totalCarrinho.toFixed(2).replace('.', ',');
-                    document.getElementById('pix-valor').textContent = `R$ ${valorFormatado}`;
+                    // Atualizar valor do PIX
+                    atualizarValorPix();
                     
                     // Mostrar área do PIX
                     pixInfo.style.display = 'block';
@@ -385,6 +392,21 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
             });
         });
     }
+
+    // Event listener para atualizar valor do PIX quando o modal é aberto
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                if (modal.style.display === 'block' && pixRadio && pixRadio.checked) {
+                    atualizarValorPix();
+                }
+            }
+        });
+    });
+
+    observer.observe(modal, {
+        attributes: true
+    });
 
     // Função para copiar código PIX
     window.copyPixCode = function() {
