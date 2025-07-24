@@ -311,24 +311,144 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
         });
     }
 
+    // Gerenciar opção de pagamento PIX
+    const pixRadio = document.getElementById('pix');
+    const pixInfo = document.getElementById('pix-info');
+    let qrcode = null;
+
+    if (pixRadio) {
+        // Mostrar/ocultar informações do PIX
+        document.querySelectorAll('input[name="payment-method"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.id === 'pix') {
+                    // Calcular valor total do carrinho
+                    const totalCarrinho = cart.reduce((total, item) => total + (item.valor * item.quantity), 0);
+                    
+                    // Atualizar o valor exibido
+                    const valorFormatado = totalCarrinho.toFixed(2).replace('.', ',');
+                    document.getElementById('pix-valor').textContent = `R$ ${valorFormatado}`;
+                    
+                    // Mostrar área do PIX
+                    pixInfo.style.display = 'block';
+                    
+                    // Limpar QR code anterior se existir
+                    const qrcodeDiv = document.getElementById('qrcode');
+                    qrcodeDiv.innerHTML = '';
+                    
+                    // Gerar QR Code com a chave PIX estática
+                    qrcode = new QRCode(qrcodeDiv, {
+                        text: '00020126330014BR.GOV.BCB.PIX0111013687132115204000053039865802BR5922Thays Oliveira Fonseca6009SAO PAULO621405105eidXprw366304C2F8',
+                        width: 200,
+                        height: 200,
+                        colorDark: '#000000',
+                        colorLight: '#ffffff',
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                } else {
+                    pixInfo.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // Função para copiar código PIX
+    window.copyPixCode = function() {
+        const pixCode = document.getElementById('pix-code');
+        pixCode.select();
+        document.execCommand('copy');
+        
+        // Feedback visual
+        const btnCopy = document.querySelector('.btn-copy');
+        const originalText = btnCopy.textContent;
+        btnCopy.textContent = 'Copiado!';
+        btnCopy.style.backgroundColor = '#4CAF50';
+        btnCopy.style.color = 'white';
+        
+        setTimeout(() => {
+            btnCopy.textContent = originalText;
+            btnCopy.style.backgroundColor = '';
+            btnCopy.style.color = '';
+        }, 2000);
+    };
+
     // Formulário de buffet
     const buffetForm = document.getElementById('buffet-form');
     if (buffetForm) {
+        // Controles do seletor de pessoas
+        const btnMenos = document.getElementById('btn-menos');
+        const btnMais = document.getElementById('btn-mais');
+        const quantidadePessoas = document.getElementById('quantidade-pessoas');
+
+        // Função para atualizar a quantidade de pessoas
+        function atualizarQuantidade(incremento) {
+            let quantidade = parseInt(quantidadePessoas.value);
+            quantidade += incremento;
+            
+            // Limitar entre 20 e 100
+            if (quantidade >= 20 && quantidade <= 100) {
+                quantidadePessoas.value = quantidade;
+            }
+
+            // Atualizar estado dos botões
+            btnMenos.disabled = quantidade <= 20;
+            btnMais.disabled = quantidade >= 100;
+        }
+
+        // Event listeners para os botões de quantidade
+        btnMenos.addEventListener('click', () => atualizarQuantidade(-5));
+        btnMais.addEventListener('click', () => atualizarQuantidade(5));
+
+        // Inicializar estado dos botões
+        atualizarQuantidade(0);
+
+        // Submit do formulário
         buffetForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Coletar itens selecionados
             const itens = [];
             document.querySelectorAll('input[name="buffet-items"]:checked').forEach(item => {
-                itens.push(item.id);
+                // Pegar o texto do label associado ao checkbox
+                const label = document.querySelector(`label[for="${item.id}"]`);
+                if (label) {
+                    itens.push(label.textContent);
+                }
             });
 
-            // Aqui você pode adicionar a lógica para enviar a solicitação de orçamento
-            console.log('Itens selecionados para buffet:', itens);
+            if (itens.length === 0) {
+                alert('Por favor, selecione pelo menos um item para o buffet.');
+                return;
+            }
 
+            const quantidade = quantidadePessoas.value;
+
+            // Criar mensagem formatada para WhatsApp
+            const mensagem = `*🎂 Solicitação de Orçamento - Buffet T.T Refeições 🎂*
+
+*Itens Selecionados:*
+━━━━━━━━━━━━━━━
+${itens.map(item => `✓ ${item}`).join('\n')}
+
+*Quantidade de Pessoas:* ${quantidade} pessoas
+
+_Por favor, me envie um orçamento para os itens selecionados._`;
+
+            // Número do WhatsApp formatado
+            const numeroWhatsApp = '5592982377533';
+            
+            // Criar link do WhatsApp com a mensagem
+            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            
             // Feedback para o usuário
-            alert('Solicitação de orçamento recebida! Entraremos em contato em breve.');
+            alert('Você será redirecionado para o WhatsApp para solicitar o orçamento.');
+            
+            // Abrir WhatsApp em nova aba
+            window.open(linkWhatsApp, '_blank');
+            
+            // Resetar formulário
             buffetForm.reset();
+            quantidadePessoas.value = '20'; // Resetar quantidade para o valor inicial
+            atualizarQuantidade(0); // Atualizar estado dos botões
         });
     }
 

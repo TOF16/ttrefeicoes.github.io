@@ -235,6 +235,55 @@ section h2 {
     gap: 0.5rem;
 }
 
+/* Seletor de Pessoas */
+.pessoas-group {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.pessoas-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.btn-pessoas {
+    background-color: #ffd700;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn-pessoas:hover {
+    background-color: #ffed4a;
+}
+
+#quantidade-pessoas {
+    width: 100px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.pessoas-info {
+    display: block;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
 .btn-solicitar {
     background-color: #ffd700;
     color: black;
@@ -478,6 +527,7 @@ footer {
     margin-bottom: 1rem;
 }
 
+/* Payment Methods */
 .payment-methods {
     margin-left: 1.5rem;
 }
@@ -496,11 +546,123 @@ footer {
     margin-left: 1.5rem;
 }
 
-.cpf-fiscal {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* PIX Instructions */
+.pix-instructions {
     margin: 1rem 0;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.pix-instructions h4 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.pix-value {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border: 2px solid #ffd700;
+}
+
+.pix-value p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.pix-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pix-steps p {
+    margin: 0;
+}
+
+.pix-link {
+    display: inline-block;
+    background-color: #ffd700;
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.pix-link:hover {
+    background-color: #ffed4a;
+}
+
+/* PIX QR Code */
+#pix-info {
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#qrcode {
+    margin: 0 auto 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 5px;
+    width: fit-content;
+    border: 1px solid #ddd;
+}
+
+.valor-info {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.pix-code {
+    margin-top: 1rem;
+}
+
+.pix-code p {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#pix-code {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    height: 60px;
+    resize: none;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+
+.btn-copy {
+    background-color: #ffd700;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-copy:hover {
+    background-color: #ffed4a;
 }
 
 input[type="radio"],
@@ -840,5 +1002,41 @@ input[type="checkbox"] {
 
     .cart-item-quantity {
         justify-content: center;
+    }
+
+    .pessoas-selector {
+        flex-wrap: wrap;
+    }
+
+    #quantidade-pessoas {
+        width: 80px;
+        font-size: 1rem;
+    }
+
+    .btn-pessoas {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    #pix-info {
+        padding: 1rem;
+    }
+
+    #qrcode {
+        padding: 0.5rem;
+    }
+
+    #qrcode img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .pix-instructions {
+        padding: 1rem;
+    }
+
+    .pix-value p {
+        font-size: 1.1rem;
     }
 } 
