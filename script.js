@@ -1,4 +1,36 @@
+// Função para formatar CPF
+function formatarCPF(cpf) {
+    cpf = cpf.replace(/\D/g, ''); // Remove tudo que não é número
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os primeiros 3 dígitos
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Coloca ponto após os segundos 3 dígitos
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Coloca hífen antes dos últimos 2 dígitos
+    return cpf;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Máscara do CPF
+    const cpfInput = document.getElementById('cpf');
+    if (cpfInput) {
+        cpfInput.addEventListener('input', function(e) {
+            let cpf = e.target.value;
+            cpf = formatarCPF(cpf);
+            
+            // Limita o tamanho máximo para o formato XXX.XXX.XXX-XX
+            if (cpf.length > 14) {
+                cpf = cpf.slice(0, 14);
+            }
+            
+            e.target.value = cpf;
+        });
+
+        // Impede caracteres não numéricos
+        cpfInput.addEventListener('keypress', function(e) {
+            const char = String.fromCharCode(e.keyCode);
+            if (!/[0-9]/.test(char)) {
+                e.preventDefault();
+            }
+        });
+    }
     // Menu Mobile
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('.menu');
