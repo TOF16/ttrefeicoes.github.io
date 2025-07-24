@@ -91,9 +91,11 @@ nav {
 
 /* Hero section */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('https://i.pinimg.com/736x/7f/66/b1/7f66b1625e70655cbf9ff997b3ddbb4f.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -105,16 +107,24 @@ nav {
 
 .hero-content {
     max-width: 800px;
-    padding: 2rem;
+    padding: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .hero-content h2 {
     font-size: 3.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    font-weight: 700;
 }
 
 .hero-content p {
     font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    line-height: 1.6;
 }
 
 /* Seções gerais */
@@ -792,15 +802,20 @@ input[type="checkbox"] {
 
     /* Hero Section */
     .hero-content {
-        padding: 1rem;
+        padding: 2rem;
+        margin: 0 1rem;
     }
 
     .hero-content h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     .hero-content p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        background-position: center center;
     }
 
     /* Produtos Grid */
