@@ -231,6 +231,10 @@
             <h2>Fazer Pedido</h2>
             <form id="pedido-form">
                 <div class="form-group">
+                    <label for="nome-cliente">Cliente:</label>
+                    <input type="text" id="nome-cliente" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
                     <label for="tipo-entrega">Tipo de Entrega:</label>
                     <select id="tipo-entrega" required>
                         <option value="">Selecione...</option>
@@ -301,13 +305,6 @@
                                 <label for="cash">Dinheiro</label>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="cpf-fiscal">
-                        <input type="checkbox" id="cpf-cupom" name="cpf-cupom">
-                        <label for="cpf-cupom">Quero meu CPF no Cupom Fiscal</label>
                     </div>
                 </div>
 

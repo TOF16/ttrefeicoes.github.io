@@ -214,6 +214,15 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 // Coletar dados do formulário
+                const nomeCliente = document.getElementById('nome-cliente').value.trim();
+
+                // Validar nome do cliente
+                if (!nomeCliente) {
+                    alert('Por favor, informe o nome do cliente para prosseguir com o pedido.');
+                    document.getElementById('nome-cliente').focus();
+                    return;
+                }
+
                 const tipoEntrega = document.getElementById('tipo-entrega').value;
                 const dataEntrega = new Date(document.getElementById('data-entrega').value);
                 const horaEntrega = document.getElementById('hora-entrega').value;
@@ -221,13 +230,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Obter informações de pagamento
                 const metodoPagamento = document.querySelector('input[name="payment-method"]:checked');
-                const cpf = document.getElementById('cpf').value;
-                const cpfCupom = document.getElementById('cpf-cupom').checked;
+                if (!metodoPagamento) {
+                    alert('Por favor, selecione uma forma de pagamento.');
+                    return;
+                }
 
-                // Informações de endereço se for entrega
+                const cpf = document.getElementById('cpf').value;
+
+                // Validar endereço se for entrega
                 let enderecoInfo = '';
                 if (tipoEntrega === 'entrega') {
-                    const endereco = document.getElementById('endereco').value;
+                    const endereco = document.getElementById('endereco').value.trim();
+                    if (!endereco) {
+                        alert('Por favor, informe o endereço de entrega.');
+                        document.getElementById('endereco').focus();
+                        return;
+                    }
                     const complemento = document.getElementById('complemento').value;
                     const referencia = document.getElementById('referencia').value;
                     
@@ -243,7 +261,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const totalCarrinho = cart.reduce((total, item) => total + (item.valor * item.quantity), 0);
 
+                // Mensagem específica para pagamento PIX
+                let pagamentoInfo = `💳 *Forma de Pagamento:* ${metodoPagamento ? metodoPagamento.value.toUpperCase() : 'Não selecionado'}`;
+                if (metodoPagamento && metodoPagamento.value === 'pix') {
+                    pagamentoInfo += '\n\n⚠️ *Importante:*\nPor favor, envie o comprovante do PIX para confirmarmos seu pedido.';
+                }
+
                 const mensagem = `*🎂 Novo Pedido T.T Refeições 🎂*
+
+*Cliente:* ${nomeCliente}
 
 *Itens do Pedido:*
 ━━━━━━━━━━━━━━━
@@ -259,9 +285,8 @@ ${itensCarrinho}
 
 *Informações de Pagamento:*
 ━━━━━━━━━━━━━━━
-💳 *Forma de Pagamento:* ${metodoPagamento ? metodoPagamento.value.toUpperCase() : 'Não selecionado'}
+${pagamentoInfo}
 🆔 *CPF:* ${cpf || 'Não informado'}
-${cpfCupom ? '✅ CPF no Cupom Fiscal solicitado' : ''}
 
 _Por favor, confirme a disponibilidade e o valor total do pedido._`;
 
@@ -279,7 +304,7 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
                 
                 // Limpar carrinho e fechar modal
                 cart = [];
-                saveCart(); // Salvar carrinho vazio
+                saveCart();
                 updateCartCount();
                 updateCartTotal();
                 renderCartItems();
