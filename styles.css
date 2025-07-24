@@ -990,6 +990,62 @@ input[type="checkbox"] {
         font-size: 1.5rem;
     }
 
+    .cart-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .btn-limpar-carrinho {
+        background-color: #ffebee;
+        color: #e57373;
+        border: 2px solid #e57373;
+        padding: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        flex: 1;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-limpar-carrinho:hover {
+        background-color: #e57373;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-limpar-carrinho:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-confirmar {
+        background-color: #ffd700;
+        color: black;
+        border: none;
+        padding: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        flex: 2;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-confirmar:hover {
+        background-color: #ffed4a;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-confirmar:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
     .cart-icon {
         margin-left: 1rem;
     }
@@ -1039,4 +1095,47 @@ input[type="checkbox"] {
     .pix-value p {
         font-size: 1.1rem;
     }
+}
+
+.cart-empty {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+/* Botões do Carrinho */
+.cart-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cart-btn-clear {
+    background-color: #ffebee;
+    color: #e57373;
+    border: 2px solid #e57373;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 1;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cart-btn-clear:hover {
+    background-color: #e57373;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-btn-clear:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 } 

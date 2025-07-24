@@ -8,32 +8,29 @@ function formatarCPF(cpf) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Carrinho de compras
-    let cart = [];
+    // Carrinho de compras - Inicializar com dados do localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
     const cartModal = document.getElementById('cart-modal');
     const cartItems = document.querySelector('.cart-items');
     const cartCount = document.querySelector('.cart-count');
     const cartTotalValue = document.getElementById('cart-total-value');
     const btnCart = document.querySelector('.btn-cart');
     const btnFinalizarCompra = document.getElementById('btn-finalizar-compra');
+    const btnLimparCarrinho = document.getElementById('btn-limpar-carrinho');
     const modal = document.getElementById('modal');
 
-    // Event listeners para fechar modais
-    document.querySelectorAll('.modal .close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        });
-    });
+    // Inicializar o estado do carrinho
+    updateCartCount();
+    updateCartTotal();
+    renderCartItems();
 
-    // Event listener para fechar modais clicando fora
-    window.addEventListener('click', function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.style.display = 'none';
-        }
-    });
+    // Função para salvar carrinho no localStorage
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartTotal();
+    }
 
     // Função para atualizar o contador do carrinho
     function updateCartCount() {
@@ -47,9 +44,32 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotalValue.textContent = total.toFixed(2).replace('.', ',');
     }
 
+    // Função para limpar o carrinho
+    function clearCart() {
+        cart = [];
+        saveCart();
+        renderCartItems();
+        cartModal.style.display = 'none';
+    }
+
+    // Event listener para o botão de limpar carrinho
+    if (btnLimparCarrinho) {
+        btnLimparCarrinho.addEventListener('click', function() {
+            if (confirm('Tem certeza que deseja limpar o carrinho?')) {
+                clearCart();
+            }
+        });
+    }
+
     // Função para renderizar itens do carrinho
     function renderCartItems() {
         cartItems.innerHTML = '';
+        
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p class="cart-empty">Seu carrinho está vazio</p>';
+            return;
+        }
+
         cart.forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.className = 'cart-item';
@@ -83,8 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else if (item.quantity > 1) {
                         item.quantity--;
                     }
-                    updateCartCount();
-                    updateCartTotal();
+                    saveCart();
                     renderCartItems();
                 }
             });
@@ -95,8 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btn.addEventListener('click', function() {
                 const produto = this.getAttribute('data-produto');
                 cart = cart.filter(item => item.produto !== produto);
-                updateCartCount();
-                updateCartTotal();
+                saveCart();
                 renderCartItems();
             });
         });
@@ -125,8 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            updateCartCount();
-            updateCartTotal();
+            saveCart();
             renderCartItems();
             
             // Feedback visual
@@ -155,6 +172,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Mostrar modal de pedido
         modal.style.display = 'block';
+    });
+
+    // Event listener para fechar modais
+    document.querySelectorAll('.modal .close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            const modal = this.closest('.modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+
+    // Event listener para fechar modais clicando fora
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
     });
 
     // Atualizar formulário de pedido para incluir itens do carrinho
@@ -230,6 +264,7 @@ _Por favor, confirme a disponibilidade e o valor total do pedido._`;
                 
                 // Limpar carrinho e fechar modal
                 cart = [];
+                saveCart(); // Salvar carrinho vazio
                 updateCartCount();
                 updateCartTotal();
                 renderCartItems();
