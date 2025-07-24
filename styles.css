@@ -929,6 +929,12 @@ input[type="checkbox"] {
         align-items: center;
         padding: 1rem;
         border-bottom: 1px solid #ddd;
+        background-color: white;
+        transition: background-color 0.3s ease;
+    }
+
+    .cart-item:hover {
+        background-color: #f9f9f9;
     }
 
     .cart-item-info {
@@ -938,44 +944,70 @@ input[type="checkbox"] {
     .cart-item-title {
         font-weight: bold;
         margin-bottom: 0.5rem;
+        color: #333;
     }
 
     .cart-item-price {
         color: #666;
+        font-size: 0.95rem;
     }
 
     .cart-item-quantity {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        margin: 0 1rem;
+        gap: 0.75rem;
+        margin-left: 1rem;
+        background-color: #f5f5f5;
+        padding: 0.5rem;
+        border-radius: 25px;
     }
 
     .quantity-btn {
-        background: none;
-        border: 1px solid #ddd;
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
+        border: none;
         border-radius: 50%;
-        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-weight: bold;
-        transition: all 0.3s;
-    }
-
-    .quantity-btn:hover {
-        background-color: #f5f5f5;
-    }
-
-    .cart-item-remove {
-        background: none;
-        border: none;
-        color: #ff4444;
         cursor: pointer;
         font-size: 1.2rem;
-        padding: 0.5rem;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .quantity-btn.minus {
+        background-color: #ffebee;
+        color: #e57373;
+    }
+
+    .quantity-btn.minus:hover {
+        background-color: #e57373;
+        color: white;
+        transform: translateY(-1px);
+    }
+
+    .quantity-btn.plus {
+        background-color: #e8f5e9;
+        color: #66bb6a;
+    }
+
+    .quantity-btn.plus:hover {
+        background-color: #66bb6a;
+        color: white;
+        transform: translateY(-1px);
+    }
+
+    .quantity-btn:active {
+        transform: translateY(1px);
+    }
+
+    .quantity-value {
+        min-width: 30px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        font-size: 1.1rem;
     }
 
     .cart-total {
@@ -1097,21 +1129,134 @@ input[type="checkbox"] {
     }
 }
 
+.cart-items {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-info {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.cart-item-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.cart-item-price {
+    color: #666;
+    font-size: 1rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 50px;
+    gap: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quantity-btn.minus {
+    background-color: #ffebee;
+    color: #e57373;
+}
+
+.quantity-btn.minus:hover {
+    background-color: #e57373;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(229, 115, 115, 0.3);
+}
+
+.quantity-btn.plus {
+    background-color: #e8f5e9;
+    color: #66bb6a;
+}
+
+.quantity-btn.plus:hover {
+    background-color: #66bb6a;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(102, 187, 106, 0.3);
+}
+
+.quantity-btn:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.quantity-value {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
 .cart-empty {
     text-align: center;
+    padding: 2rem;
     color: #666;
     font-style: italic;
-    padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
     margin: 1rem 0;
 }
 
-/* Botões do Carrinho */
+.cart-total {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #eee;
+}
+
+.cart-total h3 {
+    color: #333;
+    font-size: 1.5rem;
+    text-align: right;
+}
+
 .cart-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .cart-btn-clear {
@@ -1125,17 +1270,68 @@ input[type="checkbox"] {
     flex: 1;
     transition: all 0.3s ease;
     font-size: 0.95rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .cart-btn-clear:hover {
     background-color: #e57373;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(229, 115, 115, 0.3);
 }
 
 .cart-btn-clear:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+}
+
+.btn-confirmar {
+    background-color: #ffd700;
+    color: black;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    flex: 2;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-confirmar:hover {
+    background-color: #ffed4a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-confirmar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        padding: 1rem;
+    }
+
+    .cart-item-quantity {
+        padding: 0.75rem;
+    }
+
+    .quantity-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .cart-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .cart-btn-clear,
+    .btn-confirmar {
+        width: 100%;
+        padding: 1.25rem;
+        font-size: 1rem;
+    }
 } 

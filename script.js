@@ -82,13 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="cart-item-price">R$ ${item.valor.toFixed(2).replace('.', ',')}</div>
                 </div>
                 <div class="cart-item-quantity">
-                    <button class="quantity-btn minus" data-produto="${item.produto}">-</button>
-                    <span>${item.quantity}</span>
+                    <button class="quantity-btn minus" data-produto="${item.produto}">−</button>
+                    <span class="quantity-value">${item.quantity}</span>
                     <button class="quantity-btn plus" data-produto="${item.produto}">+</button>
                 </div>
-                <button class="cart-item-remove" data-produto="${item.produto}">
-                    <i class="fas fa-trash"></i>
-                </button>
             `;
             cartItems.appendChild(cartItem);
         });
@@ -109,16 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     saveCart();
                     renderCartItems();
                 }
-            });
-        });
-
-        // Adicionar event listeners para os botões de remover
-        document.querySelectorAll('.cart-item-remove').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const produto = this.getAttribute('data-produto');
-                cart = cart.filter(item => item.produto !== produto);
-                saveCart();
-                renderCartItems();
             });
         });
     }
