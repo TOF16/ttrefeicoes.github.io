@@ -728,4 +728,29 @@ input[type="checkbox"] {
     .payment-methods {
         margin-left: 0;
     }
+
+    /* Ajustes para input de CPF no mobile */
+    #cpf {
+        font-size: 16px; /* Previne zoom automático no iOS */
+        padding: 12px;
+        height: 48px; /* Altura maior para facilitar o toque */
+    }
+
+    /* Aumenta área de toque para todos os inputs no mobile */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"],
+    select {
+        height: 48px;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* Ajusta espaçamento dos labels no mobile */
+    .form-group label {
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
 } 
